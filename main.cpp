@@ -52,7 +52,7 @@ public:
         cout << "Roll no: " << roll_no << endl;
         cout << "Total marks: " << total_marks << endl;
         cout << "Department: " << department << endl;
-        cout<<"=================================================";
+        cout << "=================================================";
     }
 
 };
@@ -92,85 +92,84 @@ int main() {
 
         if (choice == 3) {
             int id;
-            cout<<"enter roll no. of user to update";
-            cin>>id;
-            for(int i=0;i<last_user;i++){
-                if(users[i].roll_no==id){
-                    id=i;
+            cout << "enter roll no. of user to update";
+            cin >> id;
+            for (int i = 0; i < last_user; i++) {
+                if (users[i].roll_no == id) {
+                    id = i;
                     break;
                 }
             }
-            if(id < last_user || id > 0){
-            users[id].display_data();
-            cout<<"Select what you want to update: "<<endl;
-            cout<<"\t1. Name"<<endl;
-            cout<<"\t2. Roll no"<<endl;
-            cout<<"\t3. Total marks"<<endl;
-            cout<<"\t4. Department"<<endl;
-            cout<<"\t0. Exit"<<endl;
-            cout<<"Enter your choice: "<<endl;
-            int update_choice;
-            cin >> update_choice;
+            if (id < last_user || id > 0) {
+                users[id].display_data();
+                cout << "Select what you want to update: " << endl;
+                cout << "\t1. Name" << endl;
+                cout << "\t2. Roll no" << endl;
+                cout << "\t3. Total marks" << endl;
+                cout << "\t4. Department" << endl;
+                cout << "\t0. Exit" << endl;
+                cout << "Enter your choice: " << endl;
+                int update_choice;
+                cin >> update_choice;
 
-            switch (update_choice) {
+                switch (update_choice) {
 
-                case 1:
-                    cout << "Enter new name: " << endl;
-                    cin >> users[id].name;
-                    break;
+                    case 1:
+                        cout << "Enter new name: " << endl;
+                        cin >> users[id].name;
+                        break;
 
-                case 2:
-                    cout << "Enter new roll no: " << endl;
-                    cin >> users[id].roll_no;
-                    break;
+                    case 2:
+                        cout << "Enter new roll no: " << endl;
+                        cin >> users[id].roll_no;
+                        break;
 
-                case 3:
-                    cout << "Enter new total marks: " << endl;
-                    cin >> users[id].total_marks;
-                    break;
+                    case 3:
+                        cout << "Enter new total marks: " << endl;
+                        cin >> users[id].total_marks;
+                        break;
 
-                case 4:
-                    cout << "Enter new department: " << endl;
-                    cin >> users[id].department;
-                    break;
+                    case 4:
+                        cout << "Enter new department: " << endl;
+                        cin >> users[id].department;
+                        break;
 
-                case 0:
-                    break;
+                    case 0:
+                        break;
 
-                default:
-                    cout << "Invalid choice!" << endl;
-                    break;
-            }
-            }
-            else{
-                cout<<"user not found";
+                    default:
+                        cout << "Invalid choice!" << endl;
+                        break;
+                }
+            } else {
+                cout << "user not found";
             }
         }
 
         if (choice == 4) {
+            int id;
 
         }
         if (choice == 5) {
             int id;
-            cout<<"enter roll no. of user to delete";
-            cin>>id;
-            for(int i=0;i<last_user;i++){
-                if(users[i].roll_no==id){
-                    id=i;
+            cout << "enter roll no. of user to delete";
+            cin >> id;
+            for (int i = 0; i < last_user; i++) {
+                if (users[i].roll_no == id) {
+                    id = i;
                     break;
                 }
             }
-            if(id > 0 || id < last_user){
+            if (id > 0 || id < last_user) {
                 users[id].display_data();
                 users[id].remove();
-                cout<<"user deleted successfully";
-                for(int i=id;i<last_user;i++){
-                    users[i]=users[i+1];
+                cout << "user deleted successfully";
+                for (int i = id; i < last_user; i++) {
+                    users[i] = users[i + 1];
                 }
                 last_user--;
-            }
-            else{
-                cout<<"user not found"<<endl;
+            } else {
+                cout << "user not found" << endl;
             }
         }
 
@@ -180,7 +179,7 @@ int main() {
 
     } while (choice != 0);
 
-    while(last_user--){
+    while (last_user--) {
         users[last_user].remove();
     }
 
