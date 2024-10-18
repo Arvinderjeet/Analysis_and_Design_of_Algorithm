@@ -1,5 +1,6 @@
 main.exe
 /todo
+temp.cpp
 
 # Prerequisites
 *.d
