@@ -10,6 +10,10 @@
 
 using namespace std;
 
+void waitForEnter() {
+    cin.get();
+}
+
 class Student {
 
 public:
@@ -111,6 +115,8 @@ int main() {
     cout << "users loaded from file" << endl;
 
     do {
+        system("pause");
+        system("cls");
         cout << "Main Menu: " << endl;
         cout << "\t1. Add user" << endl;
         cout << "\t2. Display users" << endl;
@@ -125,10 +131,17 @@ int main() {
         if (choice == 1) {
             Student user;
             user.add_data();
-            users.push_back(user);
-            ofstream outFile("students_data.txt", ios::app);
-            user.saveToFile(outFile);
-            outFile.close();
+            if (binary_search_roll(users.data(), int(users.size()), user.roll_no) != -1) {
+                cout << "user already exists" << endl;
+                user.roll_no = 0;
+            }
+            if (user.roll_no != 0) {
+                cout << "user added successfully" << endl;
+                users.push_back(user);
+                ofstream outFile("students_data.txt", ios::app);
+                user.saveToFile(outFile);
+                outFile.close();
+            }
         }
 
         if (choice == 2) {
@@ -179,7 +192,7 @@ int main() {
             getline(cin, username);
             int index = linear_search_roll(users.data(), int(users.size()), username);
             if (index != -1) {
-                cout << "Student with name [" << username << "] found at index: [" << index <<"]"<< endl;
+                cout << "Student with name [" << username << "] found at index: [" << index << "]" << endl;
             } else {
                 cout << "user not found" << endl;
                 break;
@@ -189,7 +202,7 @@ int main() {
 
         if (choice == 6) {
             int id;
-            cout << "enter roll no. of Student to delete";
+            cout << "enter roll no. of Student to delete: ";
             cin >> id;
             for (int i = 0; i < users.size(); i++) {
                 if (users[i].roll_no == id) {
@@ -207,3 +220,4 @@ int main() {
 
     return 0;
 }
+
